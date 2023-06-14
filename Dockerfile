@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.1.1-base-ubuntu20.04
+FROM nvidia/cuda:11.4.0-devel-ubuntu20.04
 
 ARG GROUPID=0
 ARG USERID=0
