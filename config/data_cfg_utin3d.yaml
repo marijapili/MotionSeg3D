@@ -1,0 +1,41 @@
+# This file is covered by the LICENSE file in the root of this project.
+# Developed by: Marija Piliskic
+#
+
+name: "utin3d"
+labels: 
+  0 : "unlabeled"
+  1 : "ground"  # for lidar-mos static 
+  2 : "static"  # for lidar-mos static 
+  3 : "movable" # for lidar-mos static 
+  4 : "dynamic" # for lidar-mos moving
+color_map: # bgr
+  0 : [0, 0, 0]
+  1 : [0, 0, 0]       # for lidar-mos static
+  2 : [255, 255, 255] # for lidar-mos static
+  3 : [255, 255, 255] # for lidar-mos static
+  4 : [0, 0, 255] # for lidar-mos moving
+# classes that are indistinguishable from single scan or inconsistent in
+# ground truth are mapped to their closest equivalent
+learning_map:
+  ## re-map the 0 unlabeled and outlier
+  ## because the new seqs only label static/moving 2021-11-02
+  0 : 1     # "unlabeled"       mapped to "static" ---------------------------mapped
+  1 : 1     # "ground"          mapped to "static" ---------------------------mapped
+  2 : 1     # "static"          mapped to "static" ---------------------------mapped
+  3 : 1     # "movable"         mapped to "static" ---------------------------mapped
+  4 : 2     # "dynamic"         mapped to "moving" ---------------------------mapped
+learning_map_inv: # inverse of previous map
+  0: 0      # "unlabeled", and others ignored
+  1: 2      # "static"
+  2: 4      # "dynamic"
+
+learning_ignore: # Ignore classes
+  0: True      # "unlabeled", and others ignored
+  1: False     # "static"
+  2: False     # "moving"
+  
+split: # sequence numbers
+  train:
+  valid:
+  test:
