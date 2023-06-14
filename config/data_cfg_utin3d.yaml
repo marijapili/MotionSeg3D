@@ -11,7 +11,7 @@ labels:
   4 : "dynamic" # for lidar-mos moving
 color_map: # bgr
   0 : [0, 0, 0]
-  1 : [0, 0, 0]       # for lidar-mos static
+  1 : [255, 255, 255] # for lidar-mos static
   2 : [255, 255, 255] # for lidar-mos static
   3 : [255, 255, 255] # for lidar-mos static
   4 : [0, 0, 255] # for lidar-mos moving

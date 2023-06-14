@@ -35,5 +35,5 @@ range_image:
   fov_up: 15.0
   fov_down: -25.0
   max_range: 50.0
-  min_range: 2.0
+  min_range: 1.0
 
