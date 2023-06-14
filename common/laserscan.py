@@ -6,6 +6,8 @@ import numpy as np
 import random
 from scipy.spatial.transform import Rotation as R
 
+from common.dataset.utin3d.ply import read_ply
+
 # import math
 # import time
 
@@ -287,7 +289,7 @@ class LaserScan:
 
 class SemLaserScan(LaserScan):
     """Class that contains LaserScan with x,y,z,r,sem_label,sem_color_label,inst_label,inst_color_label"""
-    EXTENSIONS_LABEL = ['.label']
+    EXTENSIONS_LABEL = ['.label', '.ply']
 
     def __init__(self, sem_color_dict=None, project=False,
                  H=64, W=1024, fov_up=3.0, fov_down=-25.0, max_classes=300,
@@ -351,7 +353,12 @@ class SemLaserScan(LaserScan):
             raise RuntimeError("Filename extension is not valid label file.")
 
         # if all goes well, open label
-        label = np.fromfile(filename, dtype=np.int32)
+        #if it is '.label' just open
+        if filename.endswith('.label'):
+            label = np.fromfile(filename, dtype=np.int32)
+        elif filename.endswith('.ply'):
+            label = read_ply(filename)
+            label = label['classif']
         label = label.reshape((-1))
 
         if self.drop_points is not False:
