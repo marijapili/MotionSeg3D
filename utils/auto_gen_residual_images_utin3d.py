@@ -145,7 +145,7 @@ if __name__ == '__main__':
                 config['num_last_n'] = i
                 config['scan_folder'] = f"{config['dataroot']}/runs/{seq}/velodyne_frames"
                 config['pose_file'] = f"{config['dataroot']}/annotation/{seq}/correct_traj_{seq}.pkl"
-                config['residual_image_folder'] = f"{config['dataroot']}/residuals/{seq}/residual_images_{i}"
-                config['visualization_folder'] = f"{config['dataroot']}/residuals/{seq}/visualization_{i}"
+                config['residual_image_folder'] = f"{os.curdir}/residuals/{seq}/residual_images_{i}"
+                config['visualization_folder'] = f"{os.curdir}/residuals/{seq}/visualization_{i}"
                 ic(config)
                 process_one_seq(config)

@@ -13,7 +13,7 @@ normalize: True
 # use the last n frame to calculate the difference image
 num_last_n: 8
 
-dataroot: '/nas/ASRL/2022-UTIn3D-Atrium'
+dataroot: '/home/asrl/data/2022-UTIn3D-Atrium'
 # Inputs
 # the folder of raw LiDAR scans
 # scan_folder: 'toydata/sequences/38/velodyne'
