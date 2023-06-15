@@ -70,7 +70,7 @@ def process_one_seq(config):
 
     # generate residual images for the whole sequence
     for frame_idx in tqdm(range(len(scan_paths))):
-        name = scan_folder[frame_idx].split('/')[-1].split('.')[0]
+        name = scan_paths[frame_idx].split('/')[-1].replace('.ply', '.npy')
         file_name = os.path.join(residual_image_folder, name)
         diff_image = np.full((range_image_params['height'], range_image_params['width']), 0,
                        dtype=np.float32)  # [H,W] range (0 is no data)
@@ -122,7 +122,7 @@ def process_one_seq(config):
                 ax.set_axis_off()
                 fig.add_axes(ax)
                 ax.imshow(diff_image, vmin=0, vmax=1)
-                image_name = os.path.join(visualization_folder, str(frame_idx).zfill(6))
+                image_name = os.path.join(visualization_folder, name)
                 plt.savefig(image_name)
                 plt.close()
 
@@ -145,7 +145,7 @@ if __name__ == '__main__':
                 config['num_last_n'] = i
                 config['scan_folder'] = f"{config['dataroot']}/runs/{seq}/velodyne_frames"
                 config['pose_file'] = f"{config['dataroot']}/annotation/{seq}/correct_traj_{seq}.pkl"
-                config['residual_image_folder'] = f"{config['dataroot']}/tmpdata/{seq}/residual_images_{i}"
-                config['visualization_folder'] = f"{config['dataroot']}/tmpdata/{seq}/visualization_{i}"
+                config['residual_image_folder'] = f"{config['dataroot']}/residuals/{seq}/residual_images_{i}"
+                config['visualization_folder'] = f"{config['dataroot']}/residuals/{seq}/visualization_{i}"
                 ic(config)
                 process_one_seq(config)

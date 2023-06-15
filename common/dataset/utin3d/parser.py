@@ -120,7 +120,7 @@ class UTin3D(Dataset):
             if self.use_residual:
                 for i in range(self.n_input_scans):
                     folder_name = "residual_images_" + str(i+1)
-                    exec("residual_path_" + str(i+1) + " = os.path.join(self.root, 'tmpdata', seq, folder_name)")
+                    exec("residual_path_" + str(i+1) + " = os.path.join(self.root, 'residuals', seq, folder_name)")
 
             # get files
             scan_files = [os.path.join(dp, f) for dp, dn, fn in os.walk(
