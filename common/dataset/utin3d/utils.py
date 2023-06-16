@@ -8,7 +8,7 @@ import math
 import numpy as np
 import pickle
 from scipy.spatial.transform import Rotation as R
-from ply import read_ply
+from common.dataset.utin3d.ply import read_ply
 
 np.random.seed(0)
 

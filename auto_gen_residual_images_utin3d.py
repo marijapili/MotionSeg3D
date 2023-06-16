@@ -136,7 +136,7 @@ if __name__ == '__main__':
     config = load_yaml(config_filename)
 
     # used for utin3d
-    for dataroot, seqs, _ in next(os.walk(os.path.join(config['dataroot'], 'runs'))):
+    for dataroot, seqs, _ in (os.walk(os.path.join(config['dataroot'], 'runs'))):
 
         for seq in seqs:
             for i in range(1,9): # residual_image_i

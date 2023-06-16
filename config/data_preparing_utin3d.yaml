@@ -25,7 +25,7 @@ dataroot: '/home/asrl/data/2022-UTIn3D-Atrium'
 # # Outputs
 # # the suffix should be the same as num_last_n!
 # residual_image_folder: 'toydata/sequences/08/residual_images_8'
-# visualize: True
+visualize: True
 # visualization_folder: 'toydata/sequences/08/visualization_8'
 
 # range image parameters
